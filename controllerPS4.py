@@ -104,12 +104,24 @@ class controllerPS4(object):
                                     driveRight = False
                        
                      
-                    if event.type == pygame.JOYBUTTONDOWN:
-                        if self.j.get_button(0):
-                            print("sag")
-                            mf.SetAngle(120)
-                            time.sleep(0.1)
-                            mf.SetAngle(35)
+                        if event.type == pygame.JOYBUTTONDOWN:
+                            if self.j.get_button(0):
+                                print("sag")
+                                mf.SetAngle(120)
+                                time.sleep(0.1)
+                                mf.SetAngle(35)
+                                
+                        if event.type == pygame.JOYHATMOTION:
+                            self.j.get_hat(0) => x, y
+                                if x > 0:
+                                    print("some hat pressed")
+                                if x < 0:
+                                    print("some hat pressed")
+                                if y > 0:
+                                    print("some hat pressed")
+                                if y < 0:
+                                    print("some hat pressed")
+                            
                     
                            
         except KeyboardInterrupt:
