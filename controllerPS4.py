@@ -1,5 +1,6 @@
 import pygame
 import motorfunctions as m
+import servoFunctions as s
 import time
 
 
@@ -58,6 +59,8 @@ class controllerPS4(object):
         #driveRight = False
  
         mf = m.motorfunctions(16, 18, 13, 11)
+        sf = s.servoFunctions(2, 3, 0, 0)
+        
         self.SetupPygameAndController()
         driveLeft = False
         driveRight = False
@@ -115,12 +118,17 @@ class controllerPS4(object):
                             self.j.get_hat(0) => x, y
                                 if x > 0:
                                     print("some hat pressed")
+                                    sf.AdjustServoAngleByValue(1, 1) # first parameter refers to the first servo you set during init of sf.
                                 if x < 0:
                                     print("some hat pressed")
+                                    sf.AdjustServoAngleByValue(1, -1)
                                 if y > 0:
                                     print("some hat pressed")
+                                    sf.AdjustServoAngleByValue(2, 1)
                                 if y < 0:
                                     print("some hat pressed")
+                                    sf.AdjustServoAngleByValue(2, -1)
+
                             
                     
                            

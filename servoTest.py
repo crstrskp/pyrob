@@ -4,12 +4,6 @@
 Created on Wed Jan 29 11:42:35 2020
 
 @author: luffe
-
-roadmap:
-    test min/max angle of servos. 
-    increment / decrement on method call
-    integrate with ps4 controller ^
-
 """
 
 import servoFunctions as servo
@@ -30,15 +24,10 @@ try:
         sf.SetServoAngle(180, 1)
         sleep(1)
         sf.SetServoAngle(135, 1)
-        sleep(1)    
+        sleep(1)
         sf.SetServoAngle(90, 1)
         sleep(1)
         sf.SetServoAngle(45, 1)
         sleep(1)
 except KeyboardInterrupt:
     sf.StopPigpio()
-#sf.SetAngle(0, 1)
-#sf.SetAngle(0, 2)
-#sf.SetAngle(180, 2)
-#sleep(3)
-#sf.CleanUp()
