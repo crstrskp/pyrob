@@ -85,7 +85,14 @@ class servoFunctions(object):
 
 
     def UpdateAngles(self):
-        print("implement me!")
+        if hasattr(self, "servo1Angle"):
+            self.servo1Angle = self.get_servo_pulsewidth(self.pin1)
+        if hasattr(self, "servo2Angle"):
+            self.servo2Angle = self.get_servo_pulsewidth(self.pin2)
+        if hasattr(self, "servo3Angle"):
+            self.servo3Angle = self.get_servo_pulsewidth(self.pin3)
+        if hasattr(self, "servo4Angle"):
+            self.servo4Angle = self.get_servo_pulsewidth(self.pin4)
         
         
     def StopPigpio(self):
