@@ -115,22 +115,21 @@ class controllerPS4(object):
                                 mf.SetAngle(35)
                                 
                         if event.type == pygame.JOYHATMOTION:
-                            self.j.get_hat(0) => x, y
-                                if x > 0:
-                                    print("some hat pressed")
-                                    sf.AdjustServoAngleByValue(1, 1) # first parameter refers to the first servo you set during init of sf.
-                                if x < 0:
-                                    print("some hat pressed")
-                                    sf.AdjustServoAngleByValue(1, -1)
-                                if y > 0:
-                                    print("some hat pressed")
-                                    sf.AdjustServoAngleByValue(2, 1)
-                                if y < 0:
-                                    print("some hat pressed")
-                                    sf.AdjustServoAngleByValue(2, -1)
-
+                            x, y = self.j.get_hat(0)
+                            if x > 0:
+                                print("right button clicked!")
+                                sf.AdjustServoAngleByValue(1, 1) # first parameter refers to the first servo you set during init of sf.
                             
-                    
+                            if x < 0:
+                                print("left button clicked!")
+                                sf.AdjustServoAngleByValue(1, -1) # first parameter refers to the first servo you set during init of sf.
+                            if y > 0:
+                                print("up button clicked!")
+                                sf.AdjustServoAngleByValue(2, 1) # first parameter refers to the first servo you set during init of sf.
+                            
+                            if y < 0:
+                                print("down button clicked!")
+                                sf.AdjustServoAngleByValue(2, -1) # first parameter refers to the first servo you set during init of sf.
                            
         except KeyboardInterrupt:
             print("EXITING NOW")
