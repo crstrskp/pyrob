@@ -3,7 +3,7 @@ import pygame
 
 pygame.init
 
-from time import sleep
+
  
 class motorfunctions(object):
  
@@ -18,15 +18,10 @@ class motorfunctions(object):
         GPIO.setup(self.Motor1A,GPIO.OUT)
         GPIO.setup(self.Motor1B,GPIO.OUT)
  
- 
         GPIO.setup(self.Motor2A,GPIO.OUT)
         GPIO.setup(self.Motor2B,GPIO.OUT)
-        
-        GPIO.setup(8, GPIO.OUT)
-        self.pwm1=GPIO.PWM(8, 50)
-        self.pwm1.start(0)
  
- 
+    
     def leftForward(self):
         print("leftForward method called.")
         GPIO.output(self.Motor1A,GPIO.HIGH)
@@ -57,17 +52,7 @@ class motorfunctions(object):
         GPIO.output(self.Motor2A,GPIO.LOW)
         GPIO.output(self.Motor2B,GPIO.LOW)
     
-    def SetAngle(self, angle):
-        duty = angle / 18 + 2
-        GPIO.output(8, True)
-        sleep(0.1)
-        
-        self.pwm1.ChangeDutyCycle(duty)
-        sleep(0.1)
-        
-        GPIO.output(8, False)
-        #self.pwm.ChangeDutyCycle(0)
-        #self.pwm1.ChangedutyCycle(0)
+    
  
     def shutdown(self):
         print("shutting down...")
