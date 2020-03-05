@@ -27,8 +27,8 @@ class servoFunctions(object):
         if self.pin1 != 0:
             self.pi.set_mode(self.pin1, pigpio.OUTPUT)
             self.servo1Angle = 90
-            self.servo1MaxAngle = 150
-            self.servo1MinAngle = 30
+            self.servo1MaxAngle = 180
+            self.servo1MinAngle = 0
          
         if self.pin2 != 0:
             self.pi.set_mode(self.pin2, pigpio.OUTPUT)
@@ -112,14 +112,15 @@ class servoFunctions(object):
 
 
     def UpdateAngles(self):
-        if hasattr(self, "servo1Angle"):
-            self.servo1Angle = self.pi.get_servo_pulsewidth(self.pin1)
-        if hasattr(self, "servo2Angle"):
-            self.servo2Angle = self.pi.get_servo_pulsewidth(self.pin2)
-        if hasattr(self, "servo3Angle"):
-            self.servo3Angle = self.pi.get_servo_pulsewidth(self.pin3)
-        if hasattr(self, "servo4Angle"):
-            self.servo4Angle = self.pi.get_servo_pulsewidth(self.pin4)
+        pass
+#        if hasattr(self, "servo1Angle"):
+#            self.servo1Angle = self.pi.get_servo_pulsewidth(self.pin1)
+#        if hasattr(self, "servo2Angle"):
+#            self.servo2Angle = self.pi.get_servo_pulsewidth(self.pin2)
+#        if hasattr(self, "servo3Angle"):
+#            self.servo3Angle = self.pi.get_servo_pulsewidth(self.pin3)
+#        if hasattr(self, "servo4Angle"):
+#            self.servo4Angle = self.pi.get_servo_pulsewidth(self.pin4)
         
         
     def StopPigpio(self):
