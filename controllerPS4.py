@@ -3,21 +3,21 @@ import motorfunctions as m
 import servoFunctions as s
 import time
 
-
-
 class controllerPS4(object):
-
-
 
     def __init__(self):
         print("ps4 controller setting enabled")
 
-    def getController(self):
-        print(".")
+    def resetPyGameAndJoystick(self):
         pygame.quit()
         pygame.init()
         pygame.joystick.quit()
         pygame.joystick.init()
+
+
+    def getController(self):
+        self.resetPyGameAndJoystick()
+
 
         joystick_count = pygame.joystick.get_count()
         print(joystick_count)
@@ -31,10 +31,8 @@ class controllerPS4(object):
 
     def SetupPygameAndController(self):
         try:
-            pygame.init()
-            pygame.joystick.quit()
+            self.resetPyGameAndJoystick()
 
-            pygame.joystick.init();
             self.joystick_count = pygame.joystick.get_count()
             print("Joystick count: {0}".format(self.joystick_count))
             self.j = pygame.joystick.Joystick(pygame.joystick.get_count()-1)
