@@ -20,6 +20,8 @@ class motorfunctions(object):
  
         GPIO.setup(self.Motor2A,GPIO.OUT)
         GPIO.setup(self.Motor2B,GPIO.OUT)
+        
+        GPIO.setup(15,GPIO.OUT) // Brushless DC
  
     
     def leftForward(self):

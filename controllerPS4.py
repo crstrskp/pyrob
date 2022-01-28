@@ -1,12 +1,54 @@
 import pygame
+import RPi.GPIO as GPIO
 import motorfunctions as m
 import servoFunctions as s
 import time
+import pigpio
 
 class controllerPS4(object):
 
+    def saw(self):
+        print("r2 clicked")
+        
+        ss = self.j.get_axis(5)
+
+        const = ((ss+1)/2)
+
+        
+        if const > 0.999:
+            const = 1
+
+        speed = const*1000+1000
+        self.pi.set_servo_pulsewidth(self.SAW, speed)
+            
+        if speed == 1000:
+            self.pi.set_servo_pulsewidth(self.SAW, 1000)
+        print(speed)  
+
+    def beep(self):
+        print("X!");
+        if self.btnCount == 0:
+            GPIO.output(15, GPIO.HIGH);
+            self.btnCount = 1;  
+        elif self.btnCount > 0:
+            GPIO.output(15, GPIO.LOW);
+            self.btnCount = 0;
+    
     def __init__(self):
+        self.btnCount = 0;
         print("ps4 controller setting enabled")
+        
+        // brushless DC: 
+        self.SAW = 4
+        self.pi = pigpio.pi()
+        print("Set min value moter")
+        self.pi.set_servo_pulsewidth(self.SAW, 1000)
+
+        time.sleep(1)
+        print("Set max value moter")
+        self.pi.set_servo_pulsewidth(self.SAW, 2000)
+        time.sleep(1)
+        print("moter configured")
 
     def resetPyGameAndJoystick(self):
         pygame.quit()
@@ -103,13 +145,13 @@ class controllerPS4(object):
                                 if driveRight:
                                     mf.rightStop()
                                     driveRight = False
+                            if self.j.get_axis(5):
+                                self.saw()
 
                         if event.type == pygame.JOYBUTTONDOWN:
                             if self.j.get_button(0):
-                                print("sag")
-                                mf.SetAngle(120)
-                                time.sleep(0.1)
-                                mf.SetAngle(35)
+                                self.beep()
+                            
 
                     """ if event.type == pygame.JOYHATMOTION:
                             x, y = self.j.get_hat(0)
